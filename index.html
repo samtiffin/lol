@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOL</title>
+    <style>
+        html, body {
+            background: black;
+            color: rgba(255,255,255,0.75);
+            font-family: monospace;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 20rem;
+            margin: 0;
+            /*transform: perspective(400px) rotateY(10deg);*/
+        }
+    </style>
+</head>
+<body>
+    <h1>LOL</h1>
+    <script>
+        let lol = document.getElementsByTagName('h1')[0];
+        let pageX = 0;
+        let pageY = 0;
+
+        function animate() {
+            let x = (((pageX / window.innerWidth) * 100) - 50);
+            let y = (((pageY / window.innerHeight) * 100) - 50) /-1 ;
+
+            lol.style.transform = "perspective(400px) rotateX("+y+"deg) rotateY("+x+"deg)";
+            lol.style.textShadow = ""+(x/-1)+"px " +y+"px "+(Math.abs(x)+Math.abs(y))+"px white";
+
+            window.requestAnimationFrame(animate);
+        }
+
+        window.requestAnimationFrame(animate);
+
+        document.addEventListener("mousemove", function(e) {
+           pageX = e.pageX;
+           pageY = e.pageY;
+        });
+
+    </script>
+</body>
+</html>
